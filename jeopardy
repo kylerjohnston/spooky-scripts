@@ -1,0 +1,3 @@
+#!/bin/sh
+
+rsync -avzP ~/tmp/Jeopardy*.mp4 krj@spinoza:"/home/share/shows/Jeopardy/" && rm ~/tmp/Jeopardy*

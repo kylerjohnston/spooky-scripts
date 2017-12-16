@@ -10,7 +10,7 @@ export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus
 
 function connect()
 {   
-    xrandr --output HDMI1 --left-of eDP1 --preferred --output HDMI1 --primary >> /tmp/screen
+    xrandr --output HDMI1 --above eDP1 --preferred --output HDMI1 --primary >> /tmp/screen
 }
 
 function disconnect(){

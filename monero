@@ -1,0 +1,5 @@
+#!/bin/bash
+# launch monero
+
+cd ~/.monero
+monero-wallet-cli --daemon-address na.node.moneroworld.com:18089 --wallet-file ./monero

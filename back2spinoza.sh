@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # Setting this, so the repo does not need to be given on the commandline:
-export BORG_REPO='borg@spinoza:/home/borg/spooky'
+export BORG_REPO='borg@spinoza:~/spooky'
 
 # Setting this, so you won't be asked for your repository passphrase:
 #export BORG_PASSPHRASE='XYZl0ngandsecurepa_55_phrasea&&123'
@@ -61,6 +61,7 @@ global_exit=$(( backup_exit > prune_exit ? backup_exit : prune_exit ))
 if [ ${global_exit} -eq 1 ];
 then
     info "Backup and/or Prune finished with a warning"
+    global_exit=0 # this is a hack to suppress a warning causing my systemd service to fail
 fi
 
 if [ ${global_exit} -gt 1 ];

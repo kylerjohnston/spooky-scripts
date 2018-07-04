@@ -1,0 +1,12 @@
+[Unit]
+Description=Execute Borg backup daily at midnight
+
+[Timer]
+OnCalendar=*-*-* 00:00:00
+Unit=borg_backup.service
+User=krj
+Persistent=true
+WakeSystem=true
+
+[Install]
+WantedBy=multi-user.target

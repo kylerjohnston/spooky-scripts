@@ -1,0 +1,9 @@
+[Unit]
+Description=Daily Borg backup
+
+[Service]
+Type=simple
+ExecStart=/home/krj/code/spooky-scripts/back2spinoza.sh
+
+[Install]
+WantedBy=multi-user.target

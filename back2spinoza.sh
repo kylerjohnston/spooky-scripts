@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # Setting this, so the repo does not need to be given on the commandline:
-export BORG_REPO='borg@spinoza:~/spooky'
+export BORG_REPO='krj@descartes:/var/alexandria/spooky'
 
 # Setting this, so you won't be asked for your repository passphrase:
 #export BORG_PASSPHRASE='XYZl0ngandsecurepa_55_phrasea&&123'
@@ -28,11 +28,18 @@ borg create                         \
     --compression lz4               \
     --exclude-caches                \
     --exclude '/home/*/.cache/*'    \
+    --exclude '/home/lost+found' \
+    --exclude '/home/krj/iso' \
+    --exclude '/home/krj/snap' \
     --exclude '/home/krj/.local/share/*' \
     --exclude '/home/krj/tmp/*' \
     --exclude '/home/krj/Downloads/*' \
     --exclude '/home/krj/.mozilla/*' \
-                                    \
+    --exclude '/home/krj/dot-files' \
+    --exclude '/home/krj/VMs' \
+    --exclude '/home/krj/FiraxisLive' \
+    --exclude '/home/krj/Desktop' \
+    --exclude '/home/krj/.*' \
     $BORG_REPO::$DATE            \
     /home                           \
 

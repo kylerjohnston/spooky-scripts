@@ -3,6 +3,7 @@ Description=Daily Borg backup
 
 [Service]
 Type=simple
+User=krj
 ExecStart=/home/krj/code/spooky-scripts/back2spinoza.sh
 
 [Install]

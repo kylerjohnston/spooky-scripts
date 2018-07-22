@@ -1,10 +1,9 @@
 [Unit]
-Description=Execute Borg backup daily at midnight
+Description=Execute Borg backup daily at 2 am
 
 [Timer]
-OnCalendar=*-*-* 00:00:00
+OnCalendar=*-*-* 02:00:00
 Unit=borg_backup.service
-User=krj
 Persistent=true
 WakeSystem=true
 

@@ -27,14 +27,20 @@ info "Starting backup"
     --show-rc                       \
     --compression lz4               \
     --exclude-caches                \
-    --exclude '/home/*/.cache/*'    \
+    --exclude '/home/*/.cache'    \
+    --exclude '/home/krj/.aws' \
     --exclude '/home/lost+found' \
+    --exclude '/home/krj/.bash*' \
+    --exclude '/home/krj/.emacs.d' \
+    --exclude '/home/krj/.steam' \
+    --exclude '/home/krj/.java' \
+    --exclude '/home/krj/Public' \
     --exclude '/home/krj/iso' \
     --exclude '/home/krj/snap' \
-    --exclude '/home/krj/.local/share/*' \
-    --exclude '/home/krj/tmp/*' \
-    --exclude '/home/krj/Downloads/*' \
-    --exclude '/home/krj/.mozilla/*' \
+    --exclude '/home/krj/.local/share' \
+    --exclude '/home/krj/tmp' \
+    --exclude '/home/krj/Downloads' \
+    --exclude '/home/krj/.mozilla' \
     --exclude '/home/krj/dot-files' \
     --exclude '/home/krj/VMs' \
     --exclude '/home/krj/FiraxisLive' \

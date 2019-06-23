@@ -8,7 +8,7 @@ export BORG_REPO='krj@descartes:/var/alexandria/spooky'
 # or this to ask an external program to supply the passphrase:
 #export BORG_PASSCOMMAND='pass show backup'
 
-DATE=$(date +%Y-%m-%d-%H:%M)
+DATE=$(/usr/bin/date +%Y-%m-%d-%H:%M)
 
 # some helpers and error handling:
 info() { printf "\n%s %s\n\n" "$( date )" "$*" >&2; }
@@ -19,7 +19,7 @@ info "Starting backup"
 # Backup the most important directories into an archive named after
 # the machine this script is currently running on:
 
-borg create                         \
+/usr/local/bin/borg create                         \
     --verbose                       \
     --filter AME                    \
     --list                          \
@@ -39,7 +39,6 @@ borg create                         \
     --exclude '/home/krj/VMs' \
     --exclude '/home/krj/FiraxisLive' \
     --exclude '/home/krj/Desktop' \
-    --exclude '/home/krj/.*' \
     $BORG_REPO::$DATE            \
     /home                           \
 
@@ -52,7 +51,7 @@ info "Pruning repository"
 # limit prune's operation to this machine's archives and not apply to
 # other machines' archives also:
 
-borg prune                          \
+/usr/local/bin/borg prune                          \
     --list                          \
     --prefix '{hostname}-'          \
     --show-rc                       \

@@ -34,4 +34,5 @@ for filename in *.tar.gz; do
 	cp $filename ISODIR
 	echo "Success! Press enter to continue."
 	read p
+    fi
 done	

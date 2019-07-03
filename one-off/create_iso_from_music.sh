@@ -27,6 +27,7 @@ for filename in *.tar.gz; do
 	    echo "Success! Wrote these to disk:"
 	    for item in ${CONTENTS[@]}; do
 		echo -e "\t$item"
+		echo "$item" >> delete.txt
 	    done
 	    echo ""
 	    echo "Waiting for input to continue."

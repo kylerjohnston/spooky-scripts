@@ -11,11 +11,11 @@ for filename in *.tar.gz; do
 	mkdir ISODIR
     fi
     dirsize=`du -sm ISODIR | cut -f1 -s`
-    filesize=`du -sm $filename | cut -f1 -s`
+    filesize=`du -sm "$filename" | cut -f1 -s`
     let totalsize=$filesize+$dirsize
     if [ $totalsize -lt $DVD_CAPACITY ]; then
 	echo "Adding $filename to ISO"
-	cp $filename ISODIR
+	cp "$filename" ISODIR
 	CONTENTS+=("$filename")
     else
 	genisoimage -o ISODIR.iso ISODIR
@@ -36,7 +36,7 @@ for filename in *.tar.gz; do
 	    read p
 	fi
 	echo "Adding $filename to ISO"
-	cp $filename ISODIR
+	cp "$filename" ISODIR
 	CONTENTS=("$filename")
     fi
 done	

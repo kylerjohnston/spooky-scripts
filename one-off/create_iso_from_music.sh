@@ -20,6 +20,7 @@ for filename in *.tar.gz; do
     filesize=`du -sm $filename | cut -f1 -s`
     let totalsize=$filesize+$dirsize
     if [ $totalsize -lt $DVD_CAPACITY ]; then
+	echo "Adding $filename to ISO"
 	cp $filename ISODIR
 	CONTENTS+=("$filename")
     else
@@ -40,6 +41,7 @@ for filename in *.tar.gz; do
 	    echo "Something went wrong... Waiting for input to continue..."
 	    read p
 	fi
+	echo "Adding $filename to ISO"
 	cp $filename ISODIR
 	CONTENTS=("$filename")
     fi

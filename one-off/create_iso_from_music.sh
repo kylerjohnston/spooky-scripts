@@ -3,7 +3,7 @@
 # for archiving.
 # The directories have all been tar'ed already.
 
-DVD_CAPACITY=4813
+DVD_CAPACITY=4103
 CONTENTS=()
 
 for filename in *.tar.gz; do

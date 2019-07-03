@@ -6,12 +6,6 @@
 DVD_CAPACITY=4813
 CONTENTS=()
 
-function burn_it {
-    genisoimage -o ISODIR.iso ISODIR
-    echo "BURNING 🔥"
-    wodim -eject -tao dev=/dev/sr0 -v -data ISODIR.iso && \
-	rm ISODIR.is && 
-
 for filename in *.tar.gz; do
     if [[ ! -d ISODIR ]]; then
 	mkdir ISODIR

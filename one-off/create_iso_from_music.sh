@@ -26,7 +26,7 @@ for filename in *.tar.gz; do
         genisoimage -o disc-$COUNTER.iso ISODIR
         echo -e "* disc-$COUNTER" >> iso_log.org
         for item in ${CONTENTS[@]}; do
-            echo -e "- $item" >> iso_log.org
+            echo -e '- "$item"' >> iso_log.org
         done
         rm -rf ISODIR/*
         echo "Adding $filename to ISO"

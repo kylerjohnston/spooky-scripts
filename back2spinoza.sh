@@ -1,7 +1,15 @@
 #!/bin/sh
+# Run like:
+# back2spinoza.sh user@host:/path/to/borg/repo
+
+if [ $# -eq 0 ]; then
+    echo "ERROR: Requires path to borg repo."
+    echo "Run like: ./back2spinoza.sh user@host:/path/to/borg/repo"
+    exit 1
+fi
 
 # Setting this, so the repo does not need to be given on the commandline:
-export BORG_REPO='krj@descartes:/var/alexandria/spooky'
+export BORG_REPO="$1"
 
 # Setting this, so you won't be asked for your repository passphrase:
 #export BORG_PASSPHRASE='XYZl0ngandsecurepa_55_phrasea&&123'
@@ -11,10 +19,10 @@ export BORG_REPO='krj@descartes:/var/alexandria/spooky'
 DATE=$(/usr/bin/date +%Y-%m-%d-%H:%M)
 
 # some helpers and error handling:
-info() { printf "\n%s %s\n\n" "$( date )" "$*" >&2; }
+info() { printf " \n%s %s\n\n" "$( date )" "$*" >&2; }
 trap 'echo $( date ) Backup interrupted >&2; exit 2' INT TERM
 
-info "Starting backup"
+info "Starting backup to $1"
 
 # Backup the most important directories into an archive named after
 # the machine this script is currently running on:
@@ -27,26 +35,25 @@ info "Starting backup"
     --show-rc                       \
     --compression lz4               \
     --exclude-caches                \
-    --exclude '/home/*/.cache'    \
-    --exclude '/home/krj/.aws' \
-    --exclude '/home/lost+found' \
-    --exclude '/home/krj/.bash*' \
-    --exclude '/home/krj/.emacs.d' \
-    --exclude '/home/krj/.steam' \
-    --exclude '/home/krj/.java' \
-    --exclude '/home/krj/Public' \
-    --exclude '/home/krj/iso' \
-    --exclude '/home/krj/snap' \
-    --exclude '/home/krj/.local/share' \
-    --exclude '/home/krj/tmp' \
-    --exclude '/home/krj/Downloads' \
-    --exclude '/home/krj/.mozilla' \
-    --exclude '/home/krj/dot-files' \
-    --exclude '/home/krj/VMs' \
-    --exclude '/home/krj/FiraxisLive' \
-    --exclude '/home/krj/Desktop' \
+    --exclude "$HOME/.cache"  \
+    --exclude "$HOME/.aws" \
+    --exclude "$HOME/.bash*" \
+    --exclude "$HOME/.emacs.d" \
+    --exclude "$HOME/.steam" \
+    --exclude "$HOME/.java" \
+    --exclude "$HOME/Public" \
+    --exclude "$HOME/iso" \
+    --exclude "$HOME/snap" \
+    --exclude "$HOME/.local/share" \
+    --exclude "$HOME/tmp" \
+    --exclude "$HOME/Downloads" \
+    --exclude "$HOME/.mozilla" \
+    --exclude "$HOME/dot-files" \
+    --exclude "$HOME/VMs" \
+    --exclude "$HOME/FiraxisLive" \
+    --exclude "$HOME/Desktop" \
     $BORG_REPO::$DATE            \
-    /home                           \
+    $HOME
 
 backup_exit=$?
 

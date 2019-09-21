@@ -3,7 +3,7 @@ Description=Sets Thinkpad trackpoint sensitivity to a sane default
 
 [Service]
 Type=oneshot
-ExecStart=/home/krj/spooky-scripts/thinkpad/trackpoint.sh
+ExecStart=/usr/local/bin/fix_trackpoint.sh
 
 [Install]
 WantedBy=graphical.target
